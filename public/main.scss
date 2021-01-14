@@ -1,0 +1,166 @@
+// MAIN STYLING
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+button {
+	background-color: #3a3a3a;
+	color: white;
+	width: 32%;
+	height: 50px;
+	font-size: 20px;
+}
+
+input {
+	width: 70%;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 0;
+	margin: 15px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.small-inputs {
+	min-width: 200px;
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+// HEADER STYLING
+header {
+	width: 100%;
+	min-height: 100px;
+	background-color: #3a3a3a;
+	display: flex;
+	align-items: center;
+	padding: 0 30px;
+	a {
+		color: white;
+	}
+}
+
+// MAIN CONTENT STYLING
+.content {
+	padding: 0 5%;
+
+	// FILTERS STYLING
+	.filters {
+		width: 100%;
+		min-height: 200px;
+		background-color: #c4c4c4;
+		border: 1px solid black;
+		margin-top: 50px;
+		padding: 0 30px;
+		display: inline-block;
+
+		//INPUTS STYLING
+		.inputs {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+			//MAIN INPUTS STYLING
+			input {
+				margin: 0;
+				height: 50px;
+				width: 32%;
+				min-width: 200px;
+				margin-top: 30px;
+			}
+
+			// SMALL INPUTS DIV STYLING
+			.small-inputs {
+				width: 32%;
+				min-width: 200px;
+				display: flex;
+				justify-content: space-between;
+
+				// INPUT IN SMALL INPUTS DIV STYLING
+				input {
+					width: 47%;
+					min-width: 0;
+				}
+			}
+		}
+
+		// BUTTON IN FILTER STYLING
+		button {
+			background-color: #3a3a3a;
+			color: white;
+			width: 32%;
+			float: right;
+			height: 70px;
+			margin: 20px 0;
+			font-size: 25px;
+		}
+	}
+
+	// CARS STYILING
+	.cars {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 20px;
+
+		// SINGLE CARD STYLING
+		.car {
+			width: 32%;
+			height: 400px;
+			background-color: #c4c4c4;
+			border: 1px solid black;
+			margin-top: 30px;
+			position: relative;
+
+			.description {
+				width: 100%;
+				height: 100px;
+				background-color: #3a3a3a;
+				position: absolute;
+				bottom: 0;
+			}
+		}
+	}
+
+	// PAGINATION STYLING
+	.pagination {
+		text-align: center;
+		margin: 50px 0;
+		display: flex;
+		gap: 18px;
+		justify-content: center;
+
+		// PAGINATION BUTTONS STYLING
+		.block {
+			width: 70px;
+			height: 70px;
+			border: 1px solid black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 28px;
+			span {
+				transform: translateY(-5px);
+			}
+			&:hover {
+				background-color: #c4c4c4;
+			}
+		}
+
+		// ACTIVE BUTTON STYLING
+		.active {
+			background-color: #3a3a3a;
+			color: white;
+		}
+	}
+}
+
+@import "auth";
+@import "singleCar";
