@@ -1,12 +1,12 @@
-const express = require("express");
+const { Router } = require("express");
 const authController = require("../controllers/authController");
 
-const router = express.Router();
+const router = Router();
 
 router.get("/prijava", authController.prijava_get);
-//router.post("/prijava");
+router.post("/prijava", authController.prijava_post);
 
 router.get("/registracija", authController.registracija_get);
-//router.post("/registracija");
+router.post("/registracija", authController.registracija_post);
 
 module.exports = router;

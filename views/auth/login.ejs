@@ -5,18 +5,76 @@
 
 <div class="form-box">
 	<div class="heading"> Prijava</div>
-	<div class="form-container">
-		<input type="text" />
-		<input type="text" />
-		<div class="flex">
-			<a href="/registracija">
-				<span>Nemate račun?</span>
-				<span>Registrirajte se</span>
-			</a>
-			<button> Prijavite se </button>
+	<form action="/prijava">
+		<div class="form-container">
+			<div class="input email">
+				<input type="text" name="email" placeholder="Email" required />
+				<p class="error email"> </p>
+			</div>
+			<div class="input password">
+				<input
+					type="password"
+					name="password"
+					placeholder="Lozinka"
+					required
+				/>
+				<p class="error password"> </p>
+			</div>
+
+			<div class="flex">
+				<a href="/registracija">
+					<span>Nemate račun?</span>
+					<span>Registrirajte se</span>
+				</a>
+				<button> Prijavite se </button>
+			</div>
 		</div>
-	</div>
+	</form>
 </div>
+
+<script>
+	const form = document.querySelector('form');
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+
+		// get values
+		const email = form.email.value;
+		const password = form.password.value;
+
+		const errorRemove = document.querySelectorAll(`.error`);
+		errorRemove.forEach((err) => {
+			err.innerText = '';
+		});
+
+		try {
+			const result = await fetch('/prijava', {
+				method: 'POST',
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+				headers: { 'Content-Type': 'application/json' },
+			});
+
+			const data = await result.json();
+			console.log(data);
+
+			if (data.errors) {
+				const errors = data.errors;
+				console.log(errors);
+
+				Object.keys(errors).forEach((key) => {
+					console.log(key, errors[key]);
+					const errorDOM = document.querySelector(`.error.${key}`);
+					errorDOM.innerText = errors[key];
+				});
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	});
+</script>
 
 <!-- INCLUDE FOOTER -->
 <%- include("../partials/footer.ejs") %>

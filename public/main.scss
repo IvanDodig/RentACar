@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 // MAIN STYLING
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
+	font-family: 'Rubik', sans-serif;
 }
 
 button {
 	background-color: #3a3a3a;
 	color: white;
-	width: 32%;
 	height: 50px;
-	font-size: 20px;
+	font-size: 14px;
+	padding: 0 30px;
+	border-radius: 25px;
 }
 
 input {
@@ -20,6 +23,7 @@ input {
 	border: 1px solid black;
 	border-radius: 0;
 	margin: 15px;
+	padding: 0 20px;
 }
 
 .flex {
@@ -41,6 +45,7 @@ header {
 	background-color: #3a3a3a;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	padding: 0 30px;
 	a {
 		color: white;
@@ -162,5 +167,5 @@ header {
 	}
 }
 
-@import "auth";
-@import "singleCar";
+@import 'auth';
+@import 'singleCar';
