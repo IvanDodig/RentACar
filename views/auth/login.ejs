@@ -4,76 +4,81 @@
 <%- include("../partials/nav.ejs") %>
 
 <div class="form-box">
-	<div class="heading"> Prijava</div>
-	<form action="/prijava">
-		<div class="form-container">
-			<div class="input email">
-				<input type="text" name="email" placeholder="Email" required />
-				<p class="error email"> </p>
-			</div>
-			<div class="input password">
-				<input
-					type="password"
-					name="password"
-					placeholder="Lozinka"
-					required
-				/>
-				<p class="error password"> </p>
-			</div>
+   <div class="heading">Prijava</div>
+   <form action="/prijava">
+      <div class="form-container">
+         <div class="input email">
+            <input type="text" name="email" placeholder="Email" required />
+            <p class="error email"></p>
+         </div>
+         <div class="input password">
+            <input
+               type="password"
+               name="password"
+               placeholder="Lozinka"
+               required
+            />
+            <p class="error password"></p>
+         </div>
 
-			<div class="flex">
-				<a href="/registracija">
-					<span>Nemate račun?</span>
-					<span>Registrirajte se</span>
-				</a>
-				<button> Prijavite se </button>
-			</div>
-		</div>
-	</form>
+         <div class="flex">
+            <a href="/registracija">
+               <span>Nemate račun?</span>
+               <span>Registrirajte se</span>
+            </a>
+            <button>Prijavite se</button>
+         </div>
+      </div>
+   </form>
 </div>
 
 <script>
-	const form = document.querySelector('form');
+   const form = document.querySelector("form");
 
-	form.addEventListener('submit', async (e) => {
-		e.preventDefault();
+   form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-		// get values
-		const email = form.email.value;
-		const password = form.password.value;
+      // get values
+      const email = form.email.value;
+      const password = form.password.value;
 
-		const errorRemove = document.querySelectorAll(`.error`);
-		errorRemove.forEach((err) => {
-			err.innerText = '';
-		});
+      const errorRemove = document.querySelectorAll(`.error`);
+      errorRemove.forEach((err) => {
+         err.innerText = "";
+      });
 
-		try {
-			const result = await fetch('/prijava', {
-				method: 'POST',
-				body: JSON.stringify({
-					email,
-					password,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+      try {
+         const result = await fetch("/prijava", {
+            method: "POST",
+            body: JSON.stringify({
+               email,
+               password,
+            }),
+            headers: { "Content-Type": "application/json" },
+         });
 
-			const data = await result.json();
-			console.log(data);
+         const data = await result.json();
+         console.log(data);
 
-			if (data.errors) {
-				const errors = data.errors;
-				console.log(errors);
+         if (data.errors) {
+            const errors = data.errors;
+            console.log(errors);
 
-				Object.keys(errors).forEach((key) => {
-					console.log(key, errors[key]);
-					const errorDOM = document.querySelector(`.error.${key}`);
-					errorDOM.innerText = errors[key];
-				});
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	});
+            Object.keys(errors).forEach((key) => {
+               console.log(key, errors[key]);
+               const errorDOM = document.querySelector(`.error.${key}`);
+               errorDOM.innerText = errors[key];
+            });
+         }
+
+         if (data.user) {
+            location.assign("/");
+         }
+      } catch (err) {
+         console.log(err);
+         console.log("asdasda");
+      }
+   });
 </script>
 
 <!-- INCLUDE FOOTER -->

@@ -1,0 +1,156 @@
+<!-- INCLUDE HEAD -->
+<%- include("../partials/head.ejs") %>
+<!-- INCLUDE NAV -->
+<%- include("../partials/nav.ejs") %>
+
+<!-- Vozilo – model, tip, naziv, motor zapremina, snaga, 
+    kilometraža, broj sjedala i broj vrata, tip mjenjača, tip goriva itd…  -->
+<div class="form-box">
+   <div class="heading">Dodaj novo auto</div>
+   <form action="/create">
+      <div class="form-container">
+         <div class="input mark">
+            <input type="text" placeholder="Marka" name="mark" required />
+            <p class="error mark"></p>
+         </div>
+         <div class="input model">
+            <input type="text" placeholder="Model" name="model" required />
+            <p class="error model"></p>
+         </div>
+         <div class="input body">
+            <input type="text" placeholder="Karoserija" name="body" required />
+            <p class="error body"></p>
+         </div>
+         <div class="input engineVolume">
+            <input
+               type="text"
+               placeholder="Zapremina motora"
+               name="engineVolume"
+               required
+            />
+            <p class="error engineVolume"></p>
+         </div>
+         <div class="input power">
+            <input type="text" placeholder="Snaga" name="power" required />
+            <p class="error power"></p>
+         </div>
+         <div class="input mileage">
+            <input
+               type="text"
+               placeholder="Kilometraža"
+               name="mileage"
+               required
+            />
+            <p class="error mileage"></p>
+         </div>
+         <div class="input seatsNumber">
+            <input
+               type="text"
+               placeholder="Broj sjedala"
+               name="seatsNumber"
+               required
+            />
+            <p class="error seatsNumber"></p>
+         </div>
+         <div class="input doorsNumber">
+            <input
+               type="text"
+               placeholder="Broj vrata"
+               name="doorsNumber"
+               required
+            />
+            <p class="error doorsNumber"></p>
+         </div>
+         <div class="input gearboxType">
+            <input
+               type="text"
+               placeholder="Tip mjenjača"
+               name="gearboxType"
+               required
+            />
+            <p class="error gearboxType"></p>
+         </div>
+         <div class="input drive">
+            <input type="text" placeholder="Pogon" name="drive" required />
+            <p class="error drive"></p>
+         </div>
+         <div class="input image">
+            <input
+               type="file"
+               accept="image/*"
+               placeholder="Pogon"
+               name="image"
+               required
+            />
+            <p class="error image"></p>
+         </div>
+         <div class="flex-center">
+            <button>Dodaj auto</button>
+         </div>
+      </div>
+   </form>
+</div>
+<script>
+   const form = document.querySelector("form");
+
+   form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // get values
+      const mark = form.mark.value;
+      const model = form.model.value;
+      const body = form.body.value;
+      const engineVolume = form.engineVolume.value;
+      const power = form.power.value;
+      const mileage = form.mileage.value;
+      const seatsNumber = form.seatsNumber.value;
+      const doorsNumber = form.doorsNumber.value;
+      const gearboxType = form.gearboxType.value;
+      const image = form.image.value;
+
+      const errorRemove = document.querySelectorAll(`.error`);
+      errorRemove.forEach((err) => {
+         err.innerText = "";
+      });
+
+      try {
+         const result = await fetch("/create", {
+            method: "POST",
+            body: JSON.stringify({
+               mark,
+               model,
+               body,
+               engineVolume,
+               power,
+               mileage,
+               seatsNumber,
+               doorsNumber,
+               gearboxType,
+               image,
+            }),
+            headers: { "Content-Type": "application/json" },
+         });
+
+         const data = await result.json();
+
+         if (data.errors) {
+            const errors = data.errors;
+            console.log(errors);
+
+            Object.keys(errors).forEach((key) => {
+               console.log(key, errors[key]);
+               const errorDOM = document.querySelector(`.error.${key}`);
+               errorDOM.innerText = errors[key];
+            });
+         }
+         if (data.car) {
+            location.assign("/");
+         }
+      } catch (err) {
+         console.log(err);
+      }
+   });
+</script>
+
+<!-- INCLUDE FOOTER -->
+<%- include("../partials/footer.ejs") %>

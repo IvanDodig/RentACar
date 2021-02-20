@@ -4,143 +4,147 @@
 <%- include("../partials/nav.ejs") %>
 
 <div class="form-box">
-	<div class="heading"> Registracija</div>
+   <div class="heading">Registracija</div>
 
-	<form action="/registracija">
-		<div class="form-container">
-			<!-- NAME AND LAST NAME INPUTS -->
-			<div class="small-inputs">
-				<!-- name input -->
-				<div class="input name">
-					<input type="text" name="name" placeholder="Ime" required />
-					<p class="error name"></p>
-				</div>
+   <form action="/registracija">
+      <div class="form-container">
+         <!-- NAME AND LAST NAME INPUTS -->
+         <div class="small-inputs">
+            <!-- name input -->
+            <div class="input name">
+               <input type="text" name="name" placeholder="Ime" required />
+               <p class="error name"></p>
+            </div>
 
-				<!-- last name input -->
-				<div class="input lastName">
-					<input
-						type="text"
-						name="lastName"
-						placeholder="Prezime"
-						required
-					/>
-					<p class="error lastName"> </p>
-				</div>
-			</div>
+            <!-- last name input -->
+            <div class="input lastName">
+               <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Prezime"
+                  required
+               />
+               <p class="error lastName"></p>
+            </div>
+         </div>
 
-			<!-- EMAIL INPUT -->
-			<div class="input email">
-				<input type="text" name="email" placeholder="Email" required />
-				<p class="error email"> </p>
-			</div>
+         <!-- EMAIL INPUT -->
+         <div class="input email">
+            <input type="text" name="email" placeholder="Email" required />
+            <p class="error email"></p>
+         </div>
 
-			<!-- PHONE NUMBER INPUT -->
-			<div class="input phoneNumber">
-				<input
-					type="text"
-					name="phoneNumber"
-					placeholder="Broj telefona"
-					required
-				/>
-				<p class="error phoneNumber"> </p>
-			</div>
+         <!-- PHONE NUMBER INPUT -->
+         <div class="input phoneNumber">
+            <input
+               type="text"
+               name="phoneNumber"
+               placeholder="Broj telefona"
+               required
+            />
+            <p class="error phoneNumber"></p>
+         </div>
 
-			<!-- PASSWORD INPUTS -->
-			<div class="small-inputs">
-				<!-- password input -->
-				<div class="input password">
-					<input
-						type="password"
-						name="password"
-						placeholder="Lozinka"
-						required
-					/>
-					<p class="error password"> </p>
-				</div>
+         <!-- PASSWORD INPUTS -->
+         <div class="small-inputs">
+            <!-- password input -->
+            <div class="input password">
+               <input
+                  type="password"
+                  name="password"
+                  placeholder="Lozinka"
+                  required
+               />
+               <p class="error password"></p>
+            </div>
 
-				<!-- password repeat input -->
-				<div class="input pswRepeat">
-					<input
-						type="password"
-						name="pswRepeat"
-						placeholder="Ponovljena lozinka"
-						required
-					/>
-					<p class="error pswRepeat"> </p>
-				</div>
-			</div>
+            <!-- password repeat input -->
+            <div class="input pswRepeat">
+               <input
+                  type="password"
+                  name="pswRepeat"
+                  placeholder="Ponovljena lozinka"
+                  required
+               />
+               <p class="error pswRepeat"></p>
+            </div>
+         </div>
 
-			<div class="input birthDate">
-				<input
-					type="text"
-					name="birthDate"
-					placeholder="Datum rođenja"
-					required
-				/>
-				<p class="error birthDate"> </p>
-			</div>
+         <div class="input birthDate">
+            <input
+               type="text"
+               name="birthDate"
+               placeholder="Datum rođenja"
+               required
+            />
+            <p class="error birthDate"></p>
+         </div>
 
-			<div class="flex">
-				<a href="/prijava">
-					<span>Imate račun?</span>
-					<span>Prijavite se</span>
-				</a>
-				<button> Registrirajte se </button>
-			</div>
-		</div>
-	</form>
+         <div class="flex">
+            <a href="/prijava">
+               <span>Imate račun?</span>
+               <span>Prijavite se</span>
+            </a>
+            <button>Registrirajte se</button>
+         </div>
+      </div>
+   </form>
 </div>
 
 <script>
-	const form = document.querySelector('form');
+   const form = document.querySelector("form");
 
-	form.addEventListener('submit', async (e) => {
-		e.preventDefault();
+   form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-		// get values
-		const name = form.name.value;
-		const lastName = form.lastName.value;
-		const email = form.email.value;
-		const phoneNumber = form.phoneNumber.value;
-		const password = form.password.value;
-		const pswRepeat = form.pswRepeat.value;
-		const birthDate = form.birthDate.value;
+      // get values
+      const name = form.name.value;
+      const lastName = form.lastName.value;
+      const email = form.email.value;
+      const phoneNumber = form.phoneNumber.value;
+      const password = form.password.value;
+      const pswRepeat = form.pswRepeat.value;
+      const birthDate = form.birthDate.value;
 
-		const errorRemove = document.querySelectorAll(`.error`);
-		errorRemove.forEach((err) => {
-			err.innerText = '';
-		});
+      const errorRemove = document.querySelectorAll(`.error`);
+      errorRemove.forEach((err) => {
+         err.innerText = "";
+      });
 
-		try {
-			const result = await fetch('/registracija', {
-				method: 'POST',
-				body: JSON.stringify({
-					name,
-					lastName,
-					email,
-					phoneNumber,
-					password,
-					birthDate,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+      try {
+         const result = await fetch("/registracija", {
+            method: "POST",
+            body: JSON.stringify({
+               name,
+               lastName,
+               email,
+               phoneNumber,
+               password,
+               birthDate,
+            }),
+            headers: { "Content-Type": "application/json" },
+         });
 
-			const data = await result.json();
+         const data = await result.json();
 
-			if (data.errors) {
-				const errors = data.errors;
-				console.log(errors);
+         if (data.errors) {
+            const errors = data.errors;
+            console.log(errors);
 
-				Object.keys(errors).forEach((key) => {
-					console.log(key, errors[key]);
-					const errorDOM = document.querySelector(`.error.${key}`);
-					errorDOM.innerText = errors[key];
-				});
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	});
+            Object.keys(errors).forEach((key) => {
+               console.log(key, errors[key]);
+               const errorDOM = document.querySelector(`.error.${key}`);
+               errorDOM.innerText = errors[key];
+            });
+         }
+
+         if (data.user) {
+            location.assign("/");
+         }
+      } catch (err) {
+         console.log(err);
+      }
+   });
 </script>
 
 <!-- INCLUDE FOOTER -->
