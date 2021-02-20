@@ -1,171 +1,201 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
 // MAIN STYLING
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Rubik', sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   font-family: "Rubik", sans-serif;
 }
 
 button {
-	background-color: #3a3a3a;
-	color: white;
-	height: 50px;
-	font-size: 14px;
-	padding: 0 30px;
-	border-radius: 25px;
+   background-color: #3a3a3a;
+   color: white;
+   height: 50px;
+   font-size: 14px;
+   padding: 0 30px;
+   border-radius: 25px;
 }
 
 input {
-	width: 70%;
-	height: 50px;
-	border: 1px solid black;
-	border-radius: 0;
-	margin: 15px;
-	padding: 0 20px;
+   width: 70%;
+   height: 50px;
+   border: 1px solid black;
+   border-radius: 0;
+   margin: 15px;
+   padding: 0 20px;
 }
 
 .flex {
-	display: flex;
-	justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
+.flex-center {
+   display: flex;
+   justify-content: center;
+}
 .small-inputs {
-	min-width: 200px;
-	display: flex;
-	justify-content: space-between;
-	gap: 20px;
+   min-width: 200px;
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
 }
 
 // HEADER STYLING
 header {
-	width: 100%;
-	min-height: 100px;
-	background-color: #3a3a3a;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 30px;
-	a {
-		color: white;
-	}
+   width: 100%;
+   min-height: 100px;
+   background-color: #3a3a3a;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 30px;
+   a {
+      color: white;
+   }
+   .nav-button {
+      background-color: #c4c4c4;
+      color: #222;
+      margin: 0 10px;
+      padding: 7px 15px;
+      border-radius: 20px;
+      border: 1px solid black;
+      transition: all 0.3s ease;
+      &:hover {
+         background-color: #e6e6e6;
+      }
+   }
 }
 
 // MAIN CONTENT STYLING
 .content {
-	padding: 0 5%;
+   padding: 0 5%;
 
-	// FILTERS STYLING
-	.filters {
-		width: 100%;
-		min-height: 200px;
-		background-color: #c4c4c4;
-		border: 1px solid black;
-		margin-top: 50px;
-		padding: 0 30px;
-		display: inline-block;
+   // FILTERS STYLING
+   .filters {
+      width: 100%;
+      min-height: 200px;
+      background-color: #c4c4c4;
+      border: 1px solid black;
+      margin-top: 50px;
+      padding: 0 30px;
+      display: inline-block;
 
-		//INPUTS STYLING
-		.inputs {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
+      //INPUTS STYLING
+      .inputs {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
 
-			//MAIN INPUTS STYLING
-			input {
-				margin: 0;
-				height: 50px;
-				width: 32%;
-				min-width: 200px;
-				margin-top: 30px;
-			}
+         //MAIN INPUTS STYLING
+         input {
+            margin: 0;
+            height: 50px;
+            width: 32%;
+            min-width: 200px;
+            margin-top: 30px;
+         }
 
-			// SMALL INPUTS DIV STYLING
-			.small-inputs {
-				width: 32%;
-				min-width: 200px;
-				display: flex;
-				justify-content: space-between;
+         // SMALL INPUTS DIV STYLING
+         .small-inputs {
+            width: 32%;
+            min-width: 200px;
+            display: flex;
+            justify-content: space-between;
 
-				// INPUT IN SMALL INPUTS DIV STYLING
-				input {
-					width: 47%;
-					min-width: 0;
-				}
-			}
-		}
+            // INPUT IN SMALL INPUTS DIV STYLING
+            input {
+               width: 47%;
+               min-width: 0;
+            }
+         }
+      }
 
-		// BUTTON IN FILTER STYLING
-		button {
-			background-color: #3a3a3a;
-			color: white;
-			width: 32%;
-			float: right;
-			height: 70px;
-			margin: 20px 0;
-			font-size: 25px;
-		}
-	}
+      // BUTTON IN FILTER STYLING
+      button {
+         background-color: #3a3a3a;
+         color: white;
+         width: 32%;
+         float: right;
+         height: 70px;
+         margin: 20px 0;
+         font-size: 25px;
+      }
+   }
 
-	// CARS STYILING
-	.cars {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		margin-top: 20px;
+   // CREATE BUTTON STYLING
+   .create-button {
+      text-align: center;
+      margin-top: 50px;
+   }
 
-		// SINGLE CARD STYLING
-		.car {
-			width: 32%;
-			height: 400px;
-			background-color: #c4c4c4;
-			border: 1px solid black;
-			margin-top: 30px;
-			position: relative;
+   // CARS STYILING
+   .cars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 20px;
 
-			.description {
-				width: 100%;
-				height: 100px;
-				background-color: #3a3a3a;
-				position: absolute;
-				bottom: 0;
-			}
-		}
-	}
+      // SINGLE CARD STYLING
+      a {
+         width: 32%;
+         .car {
+            width: 100%;
+            height: 400px;
+            background-color: #c4c4c4;
+            border: 1px solid black;
+            margin-top: 30px;
+            position: relative;
+            img {
+               width: 100%;
+               height: 310px;
+            }
 
-	// PAGINATION STYLING
-	.pagination {
-		text-align: center;
-		margin: 50px 0;
-		display: flex;
-		gap: 18px;
-		justify-content: center;
+            .description {
+               width: 100%;
+               height: 100px;
+               background-color: #3a3a3a;
+               position: absolute;
+               bottom: 0;
+            }
+         }
+      }
+   }
 
-		// PAGINATION BUTTONS STYLING
-		.block {
-			width: 70px;
-			height: 70px;
-			border: 1px solid black;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 28px;
-			span {
-				transform: translateY(-5px);
-			}
-			&:hover {
-				background-color: #c4c4c4;
-			}
-		}
+   // PAGINATION STYLING
+   .pagination {
+      text-align: center;
+      margin: 50px 0;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
 
-		// ACTIVE BUTTON STYLING
-		.active {
-			background-color: #3a3a3a;
-			color: white;
-		}
-	}
+      // PAGINATION BUTTONS STYLING
+      .block {
+         width: 70px;
+         height: 70px;
+         border: 1px solid black;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 28px;
+         span {
+            transform: translateY(-5px);
+         }
+         &:hover {
+            background-color: #c4c4c4;
+         }
+      }
+
+      // ACTIVE BUTTON STYLING
+      .active {
+         background-color: #3a3a3a;
+         color: white;
+      }
+   }
 }
 
-@import 'auth';
-@import 'singleCar';
+@import "auth";
+@import "singleCar";
+@import "createCar";

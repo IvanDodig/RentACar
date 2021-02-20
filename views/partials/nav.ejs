@@ -1,9 +1,14 @@
 <header>
-	<a href="/" class="logo">
-		<h1> RENT A CAR </h1>
-	</a>
-	<div>
-		<a href="/prijava">Prijavite se </a>
-		<a href="/registracija">Registrirajte se</a>
-	</div>
+   <a href="/" class="logo">
+      <h1>RENT A CAR</h1>
+   </a>
+   <div>
+      <%if(user) {%>
+      <a href="/logout" class="nav-button">Odjavite se </a>
+      <%}else{%>
+
+      <a href="/prijava" class="nav-button">Prijavite se </a>
+      <a href="/registracija" class="nav-button">Registrirajte se</a>
+      <%}%>
+   </div>
 </header>

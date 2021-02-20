@@ -5,7 +5,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 button {
@@ -33,6 +33,15 @@ input {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .small-inputs {
@@ -64,6 +73,21 @@ header {
 
 header a {
   color: white;
+}
+
+header .nav-button {
+  background-color: #c4c4c4;
+  color: #222;
+  margin: 0 10px;
+  padding: 7px 15px;
+  border-radius: 20px;
+  border: 1px solid black;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+header .nav-button:hover {
+  background-color: #e6e6e6;
 }
 
 .content {
@@ -125,6 +149,11 @@ header a {
   font-size: 25px;
 }
 
+.content .create-button {
+  text-align: center;
+  margin-top: 50px;
+}
+
 .content .cars {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -137,8 +166,12 @@ header a {
   margin-top: 20px;
 }
 
-.content .cars .car {
+.content .cars a {
   width: 32%;
+}
+
+.content .cars a .car {
+  width: 100%;
   height: 400px;
   background-color: #c4c4c4;
   border: 1px solid black;
@@ -146,7 +179,12 @@ header a {
   position: relative;
 }
 
-.content .cars .car .description {
+.content .cars a .car img {
+  width: 100%;
+  height: 310px;
+}
+
+.content .cars a .car .description {
   width: 100%;
   height: 100px;
   background-color: #3a3a3a;
@@ -258,8 +296,14 @@ header a {
   border: 1px solid black;
 }
 
+.car-box .big-box img {
+  width: 100%;
+  height: 100%;
+}
+
 .car-box .small-box {
   width: 40%;
+  background-color: #c4c4c4;
   border: 1px solid black;
 }
 
